@@ -46,7 +46,7 @@ CREATE TABLE Electronics (
   BatteryRequired bit(1) NOT NULL,
   Size              varchar(255), 
   EnergyUse         float,   
-  ID                varchar(255) NOT NULL AUTO_INCREMENT, 
+  ID                varchar(255) NOT NULL , 
   Name          varchar(255), 
   Des           varchar(255), 
   Price         float NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE Book (
   Quantity       int(10) NOT NULL, 
   Edition        int(10) NOT NULL, 
   PublishedYear  int(10) NOT NULL,   
-  ID             varchar(255) NOT NULL AUTO_INCREMENT, 
+  ID             varchar(255) NOT NULL , 
   Name          varchar(255), 
   Des           varchar(255), 
   Price         float NOT NULL,
@@ -117,8 +117,7 @@ CREATE TABLE Orders (
   ID            int(10) NOT NULL AUTO_INCREMENT, 
   OrdersStatus         int(10) NOT NULL, 
   ReceiveDate         date, 
-  OrdersAprovingID     int(10) NOT NULL, 
-  CardPaymentMethodID int(10) NOT NULL, 
+  OrdersAprovingID     int(10) NOT NULL,  
   PRIMARY KEY (ID)) CHARACTER SET UTF8;
 
 CREATE TABLE Bill (
