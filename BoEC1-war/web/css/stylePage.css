@@ -123,7 +123,9 @@ ol {
 -----------------------*/
 
 /* buttons */
-
+span .dec .qtybtn {
+    display: none !important;
+}
 .site-btn {
 	display: inline-block;
 	border: none;

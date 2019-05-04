@@ -12,6 +12,18 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>servlet.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GioHangServlet</servlet-name>
+        <servlet-class>servlet.GioHangServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ThanhToanServlet</servlet-name>
+        <servlet-class>servlet.ThanhToanServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PlaceOrderServlet</servlet-name>
+        <servlet-class>servlet.PlaceOrderServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -24,6 +36,18 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GioHangServlet</servlet-name>
+        <url-pattern>/GioHangServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ThanhToanServlet</servlet-name>
+        <url-pattern>/ThanhToanServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlaceOrderServlet</servlet-name>
+        <url-pattern>/PlaceOrderServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -32,4 +56,40 @@
     <welcome-file-list>
         <welcome-file>./page/index.jsp</welcome-file>
     </welcome-file-list>
+    <ejb-local-ref>
+        <ejb-ref-name>BookFacade</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>session.BookFacadeLocal</local>
+        <ejb-link>BoEC1-ejb.jar#BookFacade</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>ClothesFacade</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>session.ClothesFacadeLocal</local>
+        <ejb-link>BoEC1-ejb.jar#ClothesFacade</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>BookFacade1</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>session.BookFacadeLocal</local>
+        <ejb-link>BoEC1-ejb.jar#BookFacade</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>ClothesFacade1</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>session.ClothesFacadeLocal</local>
+        <ejb-link>BoEC1-ejb.jar#ClothesFacade</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>ElectronicsFacade</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>session.ElectronicsFacadeLocal</local>
+        <ejb-link>BoEC1-ejb.jar#ElectronicsFacade</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>ClothesFacade2</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>session.ClothesFacadeLocal</local>
+        <ejb-link>BoEC1-ejb.jar#ClothesFacade</ejb-link>
+    </ejb-local-ref>
 </web-app>

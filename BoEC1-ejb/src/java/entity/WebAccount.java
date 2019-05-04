@@ -52,8 +52,6 @@ public class WebAccount implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date createDate;
 
-    private WebAccount() {
-    }
 
     public WebAccount(Integer id) {
         this.id = id;
@@ -153,6 +151,9 @@ public class WebAccount implements Serializable {
     @Override
     public String toString() {
         return "entity.WebAccount[ id=" + id + " ]";
+    }
+
+    public WebAccount() {
     }
     
 }

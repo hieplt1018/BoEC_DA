@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         try {
-            System.out.println();
+            System.out.println(username);
             if (username != null) {
                 // Chuyen trang
                 url = "./page/index.jsp";
@@ -44,9 +44,7 @@ public class RegisterServlet extends HttpServlet {
                         .username(username).password(password).build();
                 webAccountFacade.create(account);
                 
-                String successMessage = "Register successful!";
                 session.setAttribute("user", account.getUsername());
-                request.setAttribute("successMessage", successMessage);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(url);
                 dispatcher.forward(request, response);
             } else {

@@ -46,4 +46,10 @@ public class WebAccountFacade extends AbstractFacade<WebAccount> implements WebA
         }
     }
 
+    @Override
+    public WebAccount findByUsername(String username) {
+        return (WebAccount) em.createNamedQuery("WebAccount.findByUsername")
+                .setParameter("username", username).getSingleResult();
+    }
+
 }

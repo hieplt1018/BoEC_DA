@@ -33,4 +33,5 @@ public interface WebAccountFacadeLocal {
 
     boolean checkLogin(String username, String password);
     
+    WebAccount findByUsername(String username);
 }

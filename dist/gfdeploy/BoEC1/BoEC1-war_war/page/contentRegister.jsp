@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="username" class="text-center">Username</label>
+                        <label for="email" class="text-center">Email</label>
                         <input name="username" type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Input your email, please!" value="" required autofocus>
                         <small id="emailHelp" class="form-text text-muted">We'll never share your account with anyone else.</small>
                     </div>
@@ -41,12 +41,13 @@
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>
-                        <input name="address" type="text" class="form-control " id="address" placeholder="Please input your full address to deliver correctly!" required>
+                        <input name="address" type="text" class="form-control " id="address" required>
+                        <small class="form-text text-muted">Please input your full address to deliver correctly!</small>
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="telephone">Telephone Number</label>
-                            <input name="telephone" type="text" class="form-control " id="telephone" placeholder="Telephone Number" required>
+                            <input name="telephone" type="text" class="form-control " id="telephone" required>
                         </div>
                     </div>
                     <hr class="my-4">
@@ -57,8 +58,11 @@
                     </div>
                     <%}
                     %>
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary text-uppercase col-md-4 offset-md-2" style="display: inline;">Register</button>
+                        <a class="btn btn-primary text-uppercase col-md-4 ml-5" style = "display: inline;" href="${pageContext.request.contextPath}/page/index.jsp" >cancel</a>
+                    </div>
                     
-                    <button type="submit" class="btn btn-primary text-uppercase col-md-4 offset-md-4">Register</button>
                     <hr class="my-4">
                 </form>
             </div>
