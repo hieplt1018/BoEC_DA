@@ -13,7 +13,6 @@
 <%
     ClothesDaoImpl clothesDao = new ClothesDaoImpl();
     Clothes clothes = clothesDao.getClothesDetails(request.getParameter("ID"));
-//        Category category = new Category();
     NumberFormat nf = NumberFormat.getInstance();
     nf.setMinimumIntegerDigits(0);
 
@@ -45,7 +44,7 @@
     <div class="container">
         <h4>Product Details</h4>
         <div class="site-pagination">
-            <a href="http://localhost:8080/BoEC-master/page/index.jsp">Home</a> /
+            <a href="${pageContext.request.contextPath}/page/index.jsp">Home</a> /
             <a href="${pageContext.request.contextPath}/page/category.jsp?">Category</a> /
             <a href="">Product Details</a> /
             <a><%=clothes.getName()%></a>
@@ -174,73 +173,6 @@
             <li><a href="${pageContext.request.contextPath}/page/category.jsp?category=5">Jacket</a></li>
             <li><a href="${pageContext.request.contextPath}/page/category.jsp?category=6">Sweater</a></li>
         </ul>
-        <!--        <div class="product-slider owl-carousel">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="${pageContext.request.contextPath}/img/product/1.jpg" alt="">
-                            <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="pi-text">
-                            <h6>$35,00</h6>
-                            <p>Flamboyant Pink Top </p>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <div class="tag-new">New</div>
-                            <img src="${pageContext.request.contextPath}/img/product/2.jpg" alt="">
-                            <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="pi-text">
-                            <h6>$35,00</h6>
-                            <p>Black and White Stripes Dress</p>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="${pageContext.request.contextPath}/img/product/3.jpg" alt="">
-                            <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="pi-text">
-                            <h6>$35,00</h6>
-                            <p>Flamboyant Pink Top </p>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="${pageContext.request.contextPath}/img/product/4.jpg" alt="">
-                            <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="pi-text">
-                            <h6>$35,00</h6>
-                            <p>Flamboyant Pink Top </p>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="${pageContext.request.contextPath}/img/product/6.jpg" alt="">
-                            <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="pi-text">
-                            <h6>$35,00</h6>
-                            <p>Flamboyant Pink Top </p>
-                        </div>
-                    </div>-->
         <div class="product-slider owl-carousel">
             <%
                 for (Clothes clothes1 : clothesDao.getAllClothesByCategory(5)) {

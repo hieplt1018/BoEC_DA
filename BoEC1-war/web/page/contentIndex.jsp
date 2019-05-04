@@ -33,7 +33,7 @@
                         <span>New Arrivals</span>
                         <h2>BRIGHT JACKET</h2>
                         <p>Cool - Comfortable - Reasonable - Fashionable!.</p>
-                        <a href="http://localhost:8080/BoEC-master/page/product.jsp?ID=K3001" class="site-btn sb-line">DISCOVER</a>
+                        <a href="${pageContext.request.contextPath}/page/product.jsp?ID=K3001" class="site-btn sb-line">DISCOVER</a>
                         <a href="${pageContext.request.contextPath}/GioHangServlet?command=insert&ID=K3001&cartID=<%=System.currentTimeMillis()%>" class="site-btn sb-white">ADD TO CART</a>
                     </div>
                 </div>

@@ -3,9 +3,10 @@
     Created on : Mar 30, 2019, 5:32:14 PM
     Author     : asus
 --%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="dao.ClothesDaoImpl"%>
 <%@page import="java.util.Map"%>
-<%@page import="java.util.HashMap"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.Map.Entry"%>
 <%@page import="java.util.TreeMap"%>
@@ -13,7 +14,6 @@
 <%@page import="model.Cart"%>
 <%
     ClothesDaoImpl clothesDao = new ClothesDaoImpl();
-    Clothes clothes = clothesDao.getClothesDetails(String.valueOf(request.getParameter("ID")));
     String str = session.getAttribute("total").toString();
     double m = Double.valueOf(str).doubleValue();
 
@@ -43,9 +43,7 @@
 <section class="checkout-section spad">
     <div class="container">
         <div class="row">
-            
             <div class="col-lg-8 order-2 order-lg-1">
-                <!--<form class="checkout-form" action="ThanhToanServlet" method="post"-->
                 <h2 class="cf-title">Billing Address</h2>
                 <hr>
                 <form class="checkout-form" action="${pageContext.request.contextPath}/ThanhToanServlet" method="post">
@@ -82,86 +80,83 @@
                     </div>
                 
                     <hr>
-                    <div class="cf-title">Delievery Info</div>
-                    <div class="row shipping-btns">
-                        <div class="col-6">
-                            <h4>Standard</h4>
-                        </div>
-                        <div class="col-6">
-                            <div class="cf-radio-btns">
-                                <div class="cfr-item">
-                                    <input type="radio" name="Addess_Shipping" id="ship-1">
-                                    <label for="ship-1">Free</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <h4>Next day delievery  </h4>
-                        </div>
-                        <div class="col-6">
-                            <div class="cf-radio-btns">
-                                <div class="cfr-item">
-                                    <input type="radio" name="shipping" id="ship-2">
-                                    <label for="ship-2">$3.45</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="cf-title">Payment Info</div>
-                    <div class="row shipping-btns">
-                        <div class="col-6">
-                            <h4>Pay In Cash</h4>
-                        </div>
-                        <div class="col-6">
-                            <div class="cf-radio-btns">
-                                <div class="cfr-item">
-                                    <input type="radio" name="paycash" id="ship-1">
-                                    <label for="paycard">Pay in cash</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <h4>Pay Credit Card  </h4>
-                        </div>
-                        <div class="col-6">
-                            <div class="cf-radio-btns">
-                                <div class="cfr-item">
-                                    <input type="radio" name="paycredit" id="ship-2">
-                                    <label for="paycard">Pay Credit Card</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="site-btn submit-order-btn" type="submit">Place Order</button>
+                <div class="cf-title">Payment</div>
+                <ul class="payment-list">
+                    <li>Paypal & Credit / Debit card<a href="#"></a></li>
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                    <body>
+                        <script
+                            src="https://www.paypal.com/sdk/js?client-id=AVL1FIttZDNJVQv-2vQxVo8trX86xNgVKFc_hKW_ayN3hpzmnDlolOo-U1kDumQwNb0i-W5SBcuz-0l8">
+                        </script>
+                        <div id="paypal-button-container"></div>
+                        <script>
+                            paypal.Buttons({
+                                createOrder: function (data, actions) {
+                                    // Set up the transaction
+                                    return actions.order.create({
+                                        purchase_units: [{
+                                                amount: {
+                                                    value: <%=m%>
+                                                }
+                                            }]
+                                    });
+                                },
+                                onApprove: function (data, actions) {
+                                    // Capture the funds from the transaction
+                                    return actions.order.capture().then(function (details) {
+                                        // Show a success message to your buyer
+                                        alert('Transaction completed by ' + details.payer.name.given_name);
+                                        return fetch('/paypal-transaction-complete', {
+                                            method: 'post',
+                                            headers: {
+                                                'content-type': 'application/json'
+                                            },
+                                            body: JSON.stringify({
+                                                clothId: data.c
+                                            })
+                                        });
+                                    });
+                                }
+                            }).render('#paypal-button-container');
+                        </script>
+
+                    </body>
+
+
+                    <li></li>
+                </ul>
+                <button class="site-btn submit-order-btn">Place Order</button>
                 </form>
             </div>
             <div class="col-lg-4 order-1 order-lg-2">
-            <div class="checkout-cart">
-                <h3>Your Cart</h3>
-                <ul class="product-list">
-                    <%
-                        for (Map.Entry<Long, Clothes> ds : list.entrySet()) {
-                            Long key = Long.parseLong(ds.getValue().getName(), 36);
-                    %>
-                    <li>
-                        <div class="pl-thumb"><img src="<%=ds.getValue().getImage()%>" alt=""></div>
-                        <h6><%=ds.getValue().getId()%></h6>
-                        <p><%=ds.getValue().getPrice()%> $</p>
-                        <p><%=nf.format(quantity.get(key) * ds.getValue().getPrice() * 24000)%> VND</p>
-                    </li>
-                    <%
-                            so_luong += quantity.get(key);
-                            total += quantity.get(key) * ds.getValue().getPrice();
-                        }
-                    %>
-                </ul>
-                <ul class="price-list">
-                    <li>Total<span><%=m%> $ </span></li>
-                    <li>Shipping<span>free</span></li>
-                    <li class="total">Total<span><%=m%> $ (<%=nf.format(m * 24000)%> VND)</span></li>
-                </ul>
-            </div>
+                <div class="checkout-cart">
+                    <h3>Your Cart</h3>
+                    <ul class="product-list">
+                        <%
+                            for (Map.Entry<Long, Clothes> ds : list.entrySet()) {
+                                Long key = ds.getKey();
+                        %>
+                        <li>
+                            <div class="pl-thumb"><img src="<%=ds.getValue().getImage()%>" alt=""></div>
+                            <h6><%=ds.getValue().getName() %></h6>
+                            <p><%=ds.getValue().getPrice()%> $</p>
+                            <p><%=nf.format(quantity.get(key) * ds.getValue().getPrice() * 24000)%> VND</p>
+                        </li>
+                        <%
+                                so_luong += quantity.get(key);
+                                total += quantity.get(key) * ds.getValue().getPrice();
+                            }
+                        %>
+                    </ul>
+                    <ul class="price-list">
+                        <li>Shopping<span><%=m%> $ </span></li>
+                        <li>Shipping<span>free</span></li>
+                        <li class="total">Total<span><%=m%> $</span></li>
+                        <li class="float-right mb-3" >(<%=nf.format(m * 24000)%> VND)</li>
+                    </ul>
+                </div>
+        </div>
 
         </div>
     </div>
