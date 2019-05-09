@@ -6,6 +6,7 @@
 
 package search;
 
+
 /**
  *
  * Iterator pattern

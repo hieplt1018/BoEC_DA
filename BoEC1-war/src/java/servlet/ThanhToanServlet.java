@@ -8,22 +8,25 @@ package servlet;
 
 import dao.BillDaoImpl;
 import dao.ChiTietHoaDonDaoImpl;
+import entity.Bill;
 import entity.Clothes;
 import entity.WebAccount;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import entity.Bill;
-import javax.ejb.EJB;
 import model.Cart;
 import model.ChiTietHoaDon;
 import session.WebAccountFacadeLocal;
+import statebill.ProcessingState;
+import statebill.State;
+import statebill.StateContext;
 
 public class ThanhToanServlet extends HttpServlet {
     @EJB
@@ -64,8 +67,10 @@ public class ThanhToanServlet extends HttpServlet {
             int accountID = account.getId();
             System.out.println("Account ID:" + accountID);
             System.out.println(accountID);
-            String paymentMethod = "";
-            String billStatus = "";
+            String paymentMethod = "Pay In Cash";
+            StateContext stateContext = new StateContext();
+            stateContext.setState(new ProcessingState());
+            String billStatus = stateContext.applyState();
             Bill bill = new Bill(accountID, billStatus, cartID, total, paymentMethod);
             billDao.insertBill(bill);
             

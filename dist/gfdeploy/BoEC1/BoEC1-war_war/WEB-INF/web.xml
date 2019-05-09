@@ -24,6 +24,14 @@
         <servlet-name>PlaceOrderServlet</servlet-name>
         <servlet-class>servlet.PlaceOrderServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>servlet.SearchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchNameServlet</servlet-name>
+        <servlet-class>servlet.SearchNameServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>PlaceOrderServlet</servlet-name>
         <url-pattern>/PlaceOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/SearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchNameServlet</servlet-name>
+        <url-pattern>/SearchNameServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

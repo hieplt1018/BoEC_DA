@@ -3,41 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package search;
+
+import java.util.List;
+import entity.Clothes;
 
 /**
  *
  * pattern-memento
  */
 public class Originator {
- 
-    private ItemRepository item;
- 
-    public Originator(ItemRepository item) {
-        this.item = item;
+
+    private String name;
+    private List<Clothes> list;
+    private State<String, List<Clothes>> state;
+
+    public State<String, List<Clothes>> getState() {
+        return state;
     }
 
-    public ItemRepository getItem() {
-        return item;
+    public void setState(State<String, List<Clothes>> state) {
+        this.state = state;
     }
 
-    public void setItem(ItemRepository item) {
-        this.item = item;
-    }
- 
-    public Memento save() {
-        return new Memento(this.item);
-    }
- 
-    public void undo(Memento mem) {
-        this.item = mem.getItem();
+    public Memento saveStateToMemento() {
+        return new Memento(state);
     }
 
-    @Override
-    public String toString() {
-        return "Originator{" + "item=" + item + '}';
+    public void getStateFromMemento(Memento memento) {
+        state = memento.getState();
     }
- 
-    
+
 }

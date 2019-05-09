@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import entity.ClothesCatergory;
 import entity.Clothes;
+import java.util.List;
 
 /**
  *
@@ -178,6 +179,34 @@ public class ClothesDaoImpl implements ClothesDAO {
 //            connectdb.closeConnect();
         }
         return clothes;
+    }
+
+    @Override
+    public List<Clothes> findName(String nameItem) {
+        String sql = "SELECT * FROM Clothes WHERE ID LIKE '%" + nameItem+"%'";
+        List<Clothes> list = new ArrayList<>();
+        System.out.println(sql);
+        Clothes cloth = null;
+        try {
+            rs = connectdb.getStatement().executeQuery(sql);
+            while (rs.next()) {
+                int categoryId = rs.getInt("ClothesCatergoryID");
+                String name = rs.getString("Name");
+                String size = rs.getString("Size");
+                float price = rs.getFloat("Price");
+                String company = rs.getString("Company");
+                String country = rs.getString("Country");
+                String image = rs.getString("Image");
+                String id = rs.getString("ID");
+                cloth = new Clothes.ClothesBuilder().iD(id).name(name).price(price)
+                        .image(image).size(size).categoryID(categoryId).country(country)
+                        .build();
+                list.add(cloth);
+            }
+        } catch (Exception e) {
+            System.out.println("find Clothes failed!");
+        } 
+        return list;
     }
 
 }

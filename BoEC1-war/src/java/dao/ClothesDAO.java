@@ -5,8 +5,9 @@
  */
 package dao;
 
-import java.util.ArrayList;
 import entity.Clothes;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,4 +21,5 @@ public interface ClothesDAO {
     public void delete(int id);
     public int getNumberClothesByCategory(int CategoryId);
     public Clothes getClothesDetails(String clothid);
+    public List<Clothes> findName(String name);
 }

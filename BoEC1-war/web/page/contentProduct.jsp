@@ -108,7 +108,6 @@
                             <div class="panel-body">
                                 <p>Mã sản phẩm: <%=clothes.getId() %></p>
                                 <p>Mã danh mục: <%=ten_danh_muc%></p>
-
                                 <p>Tên sản phẩm: <%=clothes.getName()%></p>
                                 <p>Size: <%=clothes.getSize()%></p>
                                 <!--<p>Giá sản phẩm: <%=clothes.getPrice()%></p>-->

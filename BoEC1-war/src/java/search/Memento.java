@@ -3,28 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package search;
+
+import java.util.List;
+import entity.Clothes;
 
 /**
  *
  * @author asus
  */
 public class Memento {
-    private ItemRepository item;
 
-    public Memento() {
+    private State<String, List<Clothes>> state;
+
+    public Memento(State<String, List<Clothes>> state) {
+        this.state = state;
     }
 
-    public Memento(ItemRepository item) {
-        this.item = item;
-    }
-
-    public ItemRepository getItem() {
-        return item;
-    }
-
-    public void setItem(ItemRepository item) {
-        this.item = item;
+    public State<String, List<Clothes>> getState() {
+        return state;
     }
 }

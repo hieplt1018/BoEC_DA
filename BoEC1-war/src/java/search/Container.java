@@ -11,5 +11,5 @@ package search;
  * Iterator pattern
  */
 public interface Container {
-   public Iterator getIterator();
+   public Iterator getIterator(String name);
 }

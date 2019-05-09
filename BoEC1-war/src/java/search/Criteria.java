@@ -6,10 +6,6 @@
 
 package search;
 
-import entity.Book;
-import entity.Clothes;
-import entity.Electronics;
-import java.util.HashMap;
 import java.util.List;
 
 /**

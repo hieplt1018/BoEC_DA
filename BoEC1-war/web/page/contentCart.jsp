@@ -151,14 +151,13 @@
                         <img src="<%=clothes1.getImage()%>" alt="<%=clothes1.getName()%>">
                         <div class="pi-links">
                             <a href="${pageContext.request.contextPath}/GioHangServlet?command=insert&ID=<%=clothes1.getId()%>&cartID=<%=System.currentTimeMillis()%>" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                            <a href="${pageContext.request.contextPath}/page/product.jsp?ID=<%=clothes1.getId()%>" class="flaticon-heart"></i></a>
-
+                            <a href="${pageContext.request.contextPath}/page/product.jsp?ID=<%=clothes1.getId()%>" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                         </div>
                     </div>
-                </div>
-                <div class="pi-text">
-                    <h6><%=clothes1.getPrice()%> $</h6>
-                    <p><%=clothes1.getName()%></p>
+                    <div class="pi-text">
+                        <h6><%=clothes1.getPrice()%> $</h6>
+                        <p><%=clothes1.getId()%></p>
+                    </div>
                 </div>
             </div>
             <%
